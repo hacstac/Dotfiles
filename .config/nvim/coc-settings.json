@@ -1,0 +1,21 @@
+{
+  "diagnostic.warningSign": "⚡",
+  "diagnostic.errorSign": "🐞",
+  "diagnostic.hintSign": "💡",
+  "diagnostic.infoSign": "⚠️",
+  "diagnostic.enable": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "Markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "html"
+  ],
+  "javascript.suggestionActions.enabled": false,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": false,
+  "prettier.disableSuccessMessage": true,
+  "suggest.removeDuplicateItems": true
+}
