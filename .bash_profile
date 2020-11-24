@@ -67,8 +67,8 @@ alias config='/usr/bin/git --git-dir=/home/akash/.cfg/ --work-tree=/home/akash'
 # KeyChain
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-/usr/bin/keychain $HOME/.ssh/github_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+#/usr/bin/keychain $HOME/.ssh/github_rsa
+#source $HOME/.keychain/$HOSTNAME-sh
 ### End-Keychain ###
 
 # DENO

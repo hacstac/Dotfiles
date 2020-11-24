@@ -10,7 +10,7 @@ export ZSH="/home/${USER}/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="server"
+ZSH_THEME="hacstac"
 # export LAMDA_MOD_N_DIR_LEVELS=10
 
 # Set list of themes to pick from when loading at random
@@ -200,10 +200,15 @@ source /home/${USER}/.oh-my-zsh/plugins/zsh-interactive-cd/
 # Keychain
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
-/usr/bin/keychain $HOME/.ssh/github_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+#/usr/bin/keychain $HOME/.ssh/github_rsa
+#source $HOME/.keychain/$HOSTNAME-sh
 ### End-Keychain ###
 
 # clipboard
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+ 213 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+ 214 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
