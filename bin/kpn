@@ -1,0 +1,5 @@
+#!/bin/bash
+
+NUM=$1
+
+kubectl get pods -o jsonpath="{.items[$NUM].metadata.name}" | xclip -selection clipboard | echo $(kubectl get pods -o jsonpath="{.items[$NUM].metadata.name}")

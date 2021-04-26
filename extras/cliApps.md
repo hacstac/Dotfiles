@@ -278,3 +278,5 @@ gopass
 - [Awesome-Shell](https://github.com/alebcay/awesome-shell)
 - [Awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps)
 - [Awesome-commandline-apps](https://github.com/herrbischoff/awesome-command-line-apps#readme)
+- [Automatic GO Setup](https://github.com/canha/golang-tools-install-script)
+- [GVM](https://github.com/moovweb/gvm)

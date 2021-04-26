@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "===Clean Home Dir==="
+rm -rf ~/.nvm
+
+echo "===Installing NVM==="
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+source ~/.zshrc
+
+echo "===Install Node==="
+nvm install node --lts
+nvm install --lts
+
+echo "===Version==="
+node -v
+npx -v
+npm -v

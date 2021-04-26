@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo apt-get install curl git mercurial make binutils bison gcc build-essential -y && rm -rf /home/$USER/.gvm && bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+
+source /home/$USER/.gvm/scripts/gvm
+gvm listall
+
+read -p "Select Version: " version
+gvm install $version
+gvm use $version [--default]
+
+echo "======================================================="
+echo "GOPATH: " $GOROOT
+echo "GOROOT: " $GOPATH
+echo "Hurraahhh... go $version is installed successfully"
