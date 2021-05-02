@@ -214,8 +214,9 @@ augroup dynamic_smartcase
 augroup END
 
 " Disable python2 provider
-let g:loaded_python_provider = 0
-let g:python_host_prog = ''
+" let g:loaded_python_provider = 0
+" let g:python_host_prog = ''
+let g:python3_host_prog = "/home/hacstac/.pyenv/shims/python3"
 
 " True Color Support
 if (has("nvim"))

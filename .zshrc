@@ -202,3 +202,21 @@ export PATH="$HOME/bin:$PATH"
 
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# PyEnv
+export PATH="/home/hacstac/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Rust
+export PATH="/home/$HOME/.cargo/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# gvm
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export PATH=$PATH:/home/hacstac/.gvm/gos/go1.16.3/bin
+export GOROOT=/home/hacstac/.gvm/gos/go1.16.3
+export GOPATH=/home/hacstac/.gvm/pkgsets/go1.16.3/global
+export PATH=$PATH:/home/hacstac/.gvm/pkgsets/go1.16.3/global/bin

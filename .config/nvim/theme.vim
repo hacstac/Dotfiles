@@ -2,7 +2,7 @@
 
 " Theme {{
   set termguicolors
-  colorscheme elly
+  colorscheme jellybeans
   set background=dark
   " let g:tokyonight_style = 'night' " available: night, storm
   " let g:tokyonight_enable_italic = 0
@@ -16,7 +16,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-    \ 'colorscheme': 'tokyonight',
+    \ 'colorscheme': 'jellybeans',
     \ }
 
 let g:lightline.active = {
