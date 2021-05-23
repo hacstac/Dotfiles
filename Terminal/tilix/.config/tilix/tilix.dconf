@@ -1,0 +1,20 @@
+[/]
+copy-on-select=true
+new-instance-mode='split-right'
+quake-specific-monitor=0
+warn-vte-config-issue=false
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+background-color='#131313'
+badge-color-set=false
+bold-color-set=false
+cursor-blink-mode='on'
+cursor-colors-set=false
+cursor-shape='ibeam'
+font='SF Mono 10'
+foreground-color='#D6DBE5'
+highlight-colors-set=false
+palette=['#1F1F1F', '#F81118', '#2DC55E', '#ECBA0F', '#2A84D2', '#4E5AB7', '#1081D6', '#D6DBE5', '#D6DBE5', '#DE352E', '#1DD361', '#F3BD09', '#1081D6', '#5350B9', '#0F7DDB', '#FFFFFF']
+use-system-font=false
+use-theme-colors=false
+visible-name='Default'

@@ -10,6 +10,7 @@ function doIt() {
 		--exclude "extras" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
+		--exclude "Terminal" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 }

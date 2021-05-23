@@ -100,8 +100,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 #history
-HISTSIZE=100000
-SAVEHIST=99999
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
@@ -115,6 +115,45 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_verify
+
+# Alt+Backspace
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^H' backward-kill-dir
+
+# Alt+Left
+backward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-word
+}
+zle -N backward-word-dir
+bindkey '^[[1;5D' backward-word-dir
+
+# Alt+Right
+forward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle forward-word
+}
+zle -N forward-word-dir
+bindkey "^[[1;5C" forward-word-dir
+
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "^[[1;3D" backward-word              # [Ctrl-LeftArrow] - move backward one word
+bindkey '^[[1;3C' forward-word               # [Ctrl-RightArrow] - move forward one word
+bindkey '^[^?'    backward-delete-word            # [Ctrl-Delete] - delete work
+
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+bindkey "^[[6~" end-of-line                  # [End] - Go to end of line
+bindkey "^[[5~" beginning-of-line            # [Home] - Go to beginning of line
 
 ###-begin-npm-completion-###
 if type complete &>/dev/null; then
@@ -216,7 +255,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # gvm
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-export PATH=$PATH:/home/hacstac/.gvm/gos/go1.16.3/bin
-export GOROOT=/home/hacstac/.gvm/gos/go1.16.3
-export GOPATH=/home/hacstac/.gvm/pkgsets/go1.16.3/global
-export PATH=$PATH:/home/hacstac/.gvm/pkgsets/go1.16.3/global/bin
+export PATH=$PATH:/home/$USER/.gvm/gos/go1.16.3/bin
+export GOROOT=/home/$USER/.gvm/gos/go1.16.3
+export GOPATH=/home/$USER/.gvm/pkgsets/go1.16.3/global
+export PATH=$PATH:/home/$USER/.gvm/pkgsets/go1.16.3/global/bin

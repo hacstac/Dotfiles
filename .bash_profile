@@ -58,25 +58,12 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias config='/usr/bin/git --git-dir=/home/akash/.cfg/ --work-tree=/home/akash'
-
 # KeyChain
 ### START-Keychain ###
 # Let  re-use ssh-agent and/or gpg-agent between logins
 #/usr/bin/keychain $HOME/.ssh/github_rsa
 #source $HOME/.keychain/$HOSTNAME-sh
 ### End-Keychain ###
-
-# DENO
-export DENO_INSTALL="/home/${USER}/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-# Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Clipboard
 #alias pbcopy='xclip -selection clipboard'
