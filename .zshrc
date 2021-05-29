@@ -87,13 +87,13 @@ HIST_STAMPS="dd.mm.yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
+plugins=(
+         git
          zsh-autosuggestions
          zsh-syntax-highlighting
          zsh-256color
          zsh-interactive-cd
          fzf
-         git
         )
 
 source $ZSH/oh-my-zsh.sh
@@ -244,6 +244,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # PyEnv
 export PATH="/home/hacstac/.pyenv/bin:$PATH"
+export PATH=$PATH:$HOME/.pyenv/versions/3.9.4/bin
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -259,3 +260,13 @@ export PATH=$PATH:/home/$USER/.gvm/gos/go1.16.3/bin
 export GOROOT=/home/$USER/.gvm/gos/go1.16.3
 export GOPATH=/home/$USER/.gvm/pkgsets/go1.16.3/global
 export PATH=$PATH:/home/$USER/.gvm/pkgsets/go1.16.3/global/bin
+
+# AutoJump
+[[ -s /home/hacstac/.autojump/etc/profile.d/autojump.sh ]] && source /home/hacstac/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+# Opener
+export OPENER=/usr/bin/subl
+
+# z
+. ~/bin/z.sh

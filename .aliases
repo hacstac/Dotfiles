@@ -60,7 +60,7 @@ alias grep="grep $GREP_OPTIONS"
 # quick & short
 alias g="git"
 alias h="history"
-alias j="jobs"
+#alias j="jobs"
 
 # quick edit
 alias zshrc="vim ~/.zshrc"
@@ -118,6 +118,10 @@ fi
 # mkdir: always create parent-dirs, if needed
 alias mkdir="mkdir -p"
 alias md="mkdir"
+function mkcd {
+    mkdir -p "$1"
+    cd "$1"
+}
 
 # dirs
 alias d='dirs -v | head -10'
@@ -258,7 +262,7 @@ alias lr="ls -laFhtr $COLORFLAG"
 # show last 10 recently changed files
 alias lt="ls -altr | grep -v '^d' | tail -n 10"
 # show files and directories (also in sub-dir) that was touched in the last hour
-alias lf="find ./* -ctime -1 | xargs ls -ltr $COLORFLAG"
+# alias lf="find ./* -ctime -1 | xargs ls -ltr $COLORFLAG"
 # displays files and directories in detail
 alias ll="ls -lFh --group-directories-first $COLORFLAG"
 # shows the most recently modified files at the bottom of
@@ -617,17 +621,14 @@ alias pubkey="more ~/.ssh/id_ed25519.pub | xclip -selection clipboard | echo '=>
 # Pipe my private key to my clipboard.
 alias prikey="more ~/.ssh/id_ed25519 | xclip -selection clipboard | echo '=> Private key copied to pasteboard.'"
 
-# git init
-alias ssh_init="eval \`ssh-agent -s\` ; ssh-add ~/.ssh/github_rsa"
-
 alias copy="rsync -zrh --stats --progress --info=progress2,name0,flist0,stats2"
 alias move="rsync -zrh --stats --progress --info=progress2,name0,flist0,stats2 --remove-source-files"
 alias dush="du -sh"
 alias tf="terraform"
 
 # Compression
-alias untar_tar.bz2="tar -xjf"
 alias tar_tar.bz2="tar -cjf"
+alias untar_tar.bz2="tar -xjf"
 
 # if bar exists, use it
 if hash bar 2>/dev/null; then
@@ -656,3 +657,14 @@ alias kpf='kubectl port-forward'
 alias kgsec='kubectl get secrets'
 alias kgcm='kubectl get configmaps'
 alias kgpow='kubectl get pods --watch'
+
+# Fasd
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+alias v='f -e vim'
