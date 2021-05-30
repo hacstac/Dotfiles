@@ -2,9 +2,7 @@ set shell zsh
 set shellopts '-euy'
 set ifs "\n"
 set filesep "\n" 
-map <enter> shell
 set drawbox
-map a push %mkdir<space>
 
 # No of columns
 %{{
@@ -18,4 +16,6 @@ map a push %mkdir<space>
     fi
 }}
 
-
+# Keybindings
+map <enter> shell
+map <delete> delete
