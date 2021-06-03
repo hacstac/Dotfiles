@@ -118,6 +118,8 @@ fi
 # mkdir: always create parent-dirs, if needed
 alias mkdir="mkdir -p"
 alias md="mkdir"
+
+# mkcd
 function mkcd {
     mkdir -p "$1"
     cd "$1"

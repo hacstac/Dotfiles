@@ -94,6 +94,16 @@ plugins=(
          zsh-256color
          zsh-interactive-cd
          fzf
+         git
+         zsh-secrets
+         alias-finder
+         copydir
+         copyfile
+         docker 
+         extract
+         sublime
+         sublime-merge
+         vscode
         )
 
 source $ZSH/oh-my-zsh.sh
