@@ -24,7 +24,7 @@ export ZSH="/home/${USER}/.oh-my-zsh"
 #export LAMDA_MOD_N_DIR_LEVELS=10
 
 # Config--3
-ZSH_THEME="hacstac"
+ZSH_THEME="clean"
 
 # Config--3
 # ZSH_THEME="server"
