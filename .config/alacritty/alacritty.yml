@@ -20,7 +20,7 @@ font:
     family: Consolas
     style: Regular
   bold:
-    family: SF Mono
+    family: Consolas
     style: Bold
   italic:
     family: Consolas

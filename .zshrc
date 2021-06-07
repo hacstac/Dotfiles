@@ -247,29 +247,29 @@ export NVM_DIR="$HOME/.nvm"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # User Binaries
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/user-bin:$PATH"
 
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # PyEnv
-export PATH="/home/hacstac/.pyenv/bin:$PATH"
-export PATH=$PATH:$HOME/.pyenv/versions/3.9.4/bin
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="/home/hacstac/.pyenv/bin:$PATH"
+# export PATH=$PATH:$HOME/.pyenv/versions/3.9.4/bin
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # Rust
-export PATH="/home/$HOME/.cargo/bin:$PATH"
+# export PATH="/home/$HOME/.cargo/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 # gvm
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-export PATH=$PATH:/home/$USER/.gvm/gos/go1.16.3/bin
-export GOROOT=/home/$USER/.gvm/gos/go1.16.3
-export GOPATH=/home/$USER/.gvm/pkgsets/go1.16.3/global
-export PATH=$PATH:/home/$USER/.gvm/pkgsets/go1.16.3/global/bin
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+# export PATH=$PATH:/home/$USER/.gvm/gos/go1.16.3/bin
+# export GOROOT=/home/$USER/.gvm/gos/go1.16.3
+# export GOPATH=/home/$USER/.gvm/pkgsets/go1.16.3/global
+# export PATH=$PATH:/home/$USER/.gvm/pkgsets/go1.16.3/global/bin
 
 # AutoJump
 [[ -s /home/hacstac/.autojump/etc/profile.d/autojump.sh ]] && source /home/hacstac/.autojump/etc/profile.d/autojump.sh
@@ -279,12 +279,12 @@ autoload -U compinit && compinit -u
 export OPENER=/usr/bin/subl
 
 # z
-. ~/bin/z.sh
+. ~/.local/user-bin/z.sh
 
 # Fasd
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
+# fasd_cache="$HOME/.fasd-init-bash"
+# if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+#   fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
+# fi
+# source "$fasd_cache"
+# unset fasd_cache
