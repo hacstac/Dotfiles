@@ -17,5 +17,15 @@
   "prettier.eslintIntegration": true,
   "prettier.stylelintIntegration": false,
   "prettier.disableSuccessMessage": true,
-  "suggest.removeDuplicateItems": true
+  "suggest.removeDuplicateItems": true,
+  "golang": {
+    "command": "gopls",
+    "rootPatterns": [
+      "go.mod"
+    ],
+    "disableWorkspaceFolders": true,
+    "filetypes": [
+      "go"
+    ]
+  }
 }
