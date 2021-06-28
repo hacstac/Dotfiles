@@ -252,6 +252,16 @@ export PATH="$HOME/.local/user-bin:$PATH"
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# AutoJump
+[[ -s /home/hacstac/.autojump/etc/profile.d/autojump.sh ]] && source /home/hacstac/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+# Opener
+export OPENER=/usr/bin/subl
+
+# z
+. ~/.local/user-bin/z.sh
+
 # PyEnv
 # export PATH="/home/hacstac/.pyenv/bin:$PATH"
 # export PATH=$PATH:$HOME/.pyenv/versions/3.9.4/bin
@@ -270,16 +280,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # export GOROOT=/home/$USER/.gvm/gos/go1.16.3
 # export GOPATH=/home/$USER/.gvm/pkgsets/go1.16.3/global
 # export PATH=$PATH:/home/$USER/.gvm/pkgsets/go1.16.3/global/bin
-
-# AutoJump
-[[ -s /home/hacstac/.autojump/etc/profile.d/autojump.sh ]] && source /home/hacstac/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
-
-# Opener
-export OPENER=/usr/bin/subl
-
-# z
-. ~/.local/user-bin/z.sh
 
 # Fasd
 # fasd_cache="$HOME/.fasd-init-bash"
