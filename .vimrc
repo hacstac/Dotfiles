@@ -719,6 +719,3 @@ call plug#begin('~/.vim/plugged')
  Plug 'ryuta69/elly.vim'
  Plug 'preservim/nerdtree'
 call plug#end()
-
-
-

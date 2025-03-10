@@ -13,7 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  " Appearance and themes
  Plug 'ghifarit53/tokyonight-vim'
  Plug 'itchyny/lightline.vim'
- Plug 'ryuta69/elly.vim'
+" Plug 'ryuta69/elly.vim'
 
  " Fuzzy Search
  Plug 'ctrlpvim/ctrlp.vim'

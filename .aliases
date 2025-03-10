@@ -595,22 +595,27 @@ done
 #alias pbpaste='xclip -selection clipboard -o'
 
 # Linux specific aliases, work on both MacOS and Linux.
+# Remove existing aliases to prevent conflicts
+unalias pbcopy 2>/dev/null
 pbcopy() {
-	stdin=$(</dev/stdin);
-	pbcopy="$(which pbcopy)";
-	if [[ -n "$pbcopy" ]]; then
-		echo "$stdin" | "$pbcopy"
-	else
-		echo "$stdin" | xclip -selection clipboard
-	fi
+  local cmd_pbcopy
+  cmd_pbcopy=$(command -v pbcopy)
+  if [[ -n "$cmd_pbcopy" ]]; then
+    cat - | "$cmd_pbcopy"
+  else
+    cat - | xclip -selection clipboard
+  fi
 }
+
+unalias pbpaste 2>/dev/null
 pbpaste() {
-	pbpaste="$(which pbpaste)";
-	if [[ -n "$pbpaste" ]]; then
-		"$pbpaste"
-	else
-		xclip -selection clipboard
-	fi
+  local cmd_pbpaste
+  cmd_pbpaste=$(command -v pbpaste)
+  if [[ -n "$cmd_pbpaste" ]]; then
+    "$cmd_pbpaste"
+  else
+    xclip -selection clipboard -out
+  fi
 }
 
 # ------------------------------------------------------------------------------
