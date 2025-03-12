@@ -1,0 +1,272 @@
+{
+  // "editor.fontFamily": "Rec Mono Casual",
+  "editor.fontFamily": "Rec Mono Casual",
+  // "editor.fontFamily": "Berkeley Mono Trial",
+  "editor.fontVariations": "'wdth' 87.5, 'wght' 450",
+  "editor.detectIndentation": true,
+  "editor.formatOnSave": true,
+  // " Menlo, Apple Color Emoji,  monospace"
+  // "editor.formatOnPaste": true,
+  "editor.fontSize": 15,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.list.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.cursorBlinking": true,
+  // "editor.fontLigatures": true,
+  // "editor.fontLigatures": "'calt' on, 'liga' off, 'ss02' on",
+  "editor.fontLigatures": "'ss01','ss05','dlig'",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          //following will be in italic
+          "comment",
+          "entity.name.type.class", //class names
+          "constant", //String, Number, Boolean…, this, super
+          "storage.modifier", //static keyword
+          "storage.type.class.js", //class keyword
+          "keyword" //import, export, return…
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          //following will be excluded from italics (VSCode has some defaults for italics)
+          "invalid",
+          "keyword.operator",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
+  // "editor.tokenColorCustomizations": {
+  //   "textMateRules": [
+  //     {
+  //       "scope": "comment",
+  //       "settings": {
+  //         "fontStyle": "italic"
+  //       }
+  //     }
+  //   ]
+  // },
+  "editor.lineHeight": 25,
+  "editor.fontWeight": "500",
+  "editor.tabSize": 2,
+  "editor.cursorWidth": 2,
+  "editor.letterSpacing": 0.3,
+  "editor.glyphMargin": true,
+  "editor.minimap.enabled": false,
+  "editor.roundedSelection": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.cursorBlinking": "expand",
+  "editor.renderWhitespace": "all",
+  "editor.accessibilitySupport": "off",
+  "editor.scrollBeyondLastLine": false,
+  "editor.useTabStops": true,
+  "editor.cursorStyle": "line",
+  "editor.wordWrap": "on",
+  "editor.insertSpaces": true,
+  "editor.showFoldingControls": "always",
+  "editor.matchBrackets": "always",
+  "editor.minimap.showSlider": "always",
+  "editor.colorDecorators": true,
+  "editor.hideCursorInOverviewRuler": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.smoothScrolling": true,
+  "editor.scrollBeyondLastColumn": 0,
+  "editor.minimap.renderCharacters": false,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.parameterHints.enabled": true,
+  "editor.suggest.localityBonus": true,
+  "editor.selectionHighlight": true,
+  "workbench.statusBar.visible": true,
+  "workbench.editor.showIcons": true,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.commandPalette.preserveInput": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.iconTheme": "vscode-icons",
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/node_modules": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.next": true
+  },
+  "files.hotExit": "onExitAndWindowClose",
+  "files.insertFinalNewline": true,
+  "breadcrumbs.enabled": true,
+  "css.validate": false,
+  "diffEditor.renderSideBySide": false,
+  "extensions.ignoreRecommendations": true,
+  "explorer.openEditors.visible": 0,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.autoUpdate": true,
+  "explorer.sortOrder": "default",
+  "git.enableSmartCommit": true,
+  "git.enableCommitSigning": true,
+  "git.ignoreMissingGitWarning": true,
+  "html.format.enable": true,
+  "html.format.preserveNewLines": true,
+  "html.format.wrapLineLength": 0,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "less.validate": false,
+  "material-icon-theme.activeIconPack": "react",
+  "window.openFilesInNewWindow": "off",
+  "window.openFoldersInNewWindow": "off",
+  "window.restoreWindows": "all",
+  "window.title": "💻  ${activeEditorShort}${separator}${rootName} 💻",
+  "prettier.singleQuote": true,
+  "prettier.jsxBracketSameLine": false,
+  "prettier.bracketSpacing": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 100,
+  "prettier.tabWidth": 2,
+  "prettier.semi": true,
+  "scss.validate": false,
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.forceDownload": false,
+  "sync.quietSync": false,
+  "sync.removeExtensions": false,
+  "sync.syncExtensions": true,
+  "editor.autoClosingQuotes": "always",
+  "workbench.editor.highlightModifiedTabs": true,
+  "sync.gist": "175932fc14dfe0881d4bad76d344236b",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderLineHighlight": "all",
+  "editor.padding.bottom": 2,
+  "editor.padding.top": 2,
+  // Plugins
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (Eex)"
+  ],
+  "gitlens.defaultDateFormat": "DD--MMM--YYYY",
+  "gitlens.currentLine.dateFormat": "DD--MMM--YYYY",
+  "gitlens.statusBar.enabled": true,
+  "gitlens.statusBar.dateFormat": "DD--MMM--YYYY",
+  // Markdown All in One
+  "markdown.extension.print.theme": "dark",
+  "markdown.extension.toc.unorderedList.marker": "-",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": "explicit"
+  },
+  "path-intellisense.extensionOnImport": true,
+  "path-intellisense.showHiddenFiles": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "workbench.tree.indent": 4,
+  "go.lintOnSave": "file",
+  "explorer.confirmDelete": false,
+  "workbench.settings.editor": "json",
+  "workbench.settings.useSplitJSON": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "kite.showWelcomeNotificationOnStartup": false,
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  },
+  "[yaml]": {
+    "editor.autoIndent": "advanced",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "go.toolsManagement.autoUpdate": true,
+  "security.workspace.trust.banner": "always",
+  "git.autofetch": true,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "MesloLGSDZ Nerd Font",
+  "markdown.preview.fontFamily": "Operator Mono Book",
+  "terminal.integrated.fontWeight": "300",
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced"
+  },
+  "gitlens.defaultTimeFormat": null,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "redhat.telemetry.enabled": true,
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  "yaml.schemas": {
+    "Kubernetes": "*.yaml"
+  },
+  "jenkins.pipeline.linter.connector.pass": "Akki@#1234",
+  "jenkins.pipeline.linter.connector.user": "hacstac",
+  "editor.linkedEditing": true,
+  "workbench.sideBar.location": "right",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "git.ignoreRebaseWarning": true,
+  "workbench.colorTheme": "GitHub Dark Colorblind (Beta)"
+  // "workbench.colorCustomizations": {
+  //   "[Obsidian Dark]": {
+  //     "editor.background": "#000",
+  //     "editorGutter.background": "#000"
+  //   }
+  // }
+}
