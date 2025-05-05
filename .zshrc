@@ -14,7 +14,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins configuration
 plugins=(
-  git
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-interactive-cd
@@ -22,8 +21,9 @@ plugins=(
   alias-finder
   docker
   extract
-  # Removed duplicate git entry
-  # Removed less common plugins to speed up shell
+  copydir
+  sublime
+  vscode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -70,6 +70,15 @@ if [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]]; then
   autoload -Uz compinit && compinit -u
 fi
 
+[[ -f ~/.config/zsh/starship.zsh ]] && source ~/.config/zsh/starship.zsh
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+export LANG="en_US@UTF-8"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
 # Removed redundant/conflicting configurations:
 # - pyenv, rust, rvm paths
 # - duplicate gvm sourcing
@@ -80,4 +89,11 @@ fi
 # Finalize environment
 export OPENER=/usr/bin/subl
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# restic
 export RESTIC_REPOSITORY="sftp:zrsync.net:ws_ubuntu_opstree"
+
+# borg
+export BORG_RSH='ssh -i ~/.ssh/cloud'
+export BORG_PASSPHRASE=''
+export BORG_REPO='ssh://borg@10.0.5.13:30022/./backups/macbookair'

@@ -11,6 +11,10 @@
 # command word following the alias is also checked for alias expansion."
 alias sudo='sudo '
 
+# Aliases: editor
+alias e="$EDITOR"
+alias E="sudo -e"
+
 # Super user
 alias _='sudo'
 alias please='sudo'
@@ -43,9 +47,9 @@ alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
 alias rm='rm -I'     # 'rm -i' prompts for every file
 
 # safety features
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+# alias chown='chown --preserve-root'
+# alias chmod='chmod --preserve-root'
+# alias chgrp='chgrp --preserve-root'
 
 # dmesg with readable time
 alias dmesg='dmesg -T'
@@ -58,7 +62,7 @@ alias grep="grep $GREP_OPTIONS"
 # ------------------------------------------------------------------------------
 
 # quick & short
-alias g="git"
+# alias g="git"
 alias h="history"
 #alias j="jobs"
 
@@ -239,44 +243,263 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 
+###############################################################################
+# BAT (cat replacement) - with POSIX fallback
+###############################################################################
+
+# Find the correct bat binary (Debian/Ubuntu uses batcat)
+if command -v bat >/dev/null 2>&1; then
+  BAT_BIN="bat"
+elif command -v batcat >/dev/null 2>&1; then
+  BAT_BIN="batcat"
+else
+  BAT_BIN=""
+fi
+
+# Function to safely use bat if present, else fallback to cat
+bat() {
+  if [ -n "$BAT_BIN" ]; then
+    command "$BAT_BIN" --style=plain --paging=never --color=always "$@"
+  else
+    command cat "$@"
+  fi
+}
+
+# Alias cat to bat only if bat is present (avoids recursion)
+if [ -n "$BAT_BIN" ]; then
+  alias cat="bat"
+fi
+
+# Useful bat aliases
+if [ -n "$BAT_BIN" ]; then
+  alias batn="$BAT_BIN --style=numbers --color=always"
+  alias batg="$BAT_BIN --style=grid --color=always"
+  alias batdiff="$BAT_BIN --diff"
+  alias jsonview="$BAT_BIN --language=json --style=numbers,grid"
+  alias yamlview="$BAT_BIN --language=yaml --style=numbers,grid"
+  alias confview="$BAT_BIN --language=ini --style=numbers,grid"
+  alias logview="tail -f /var/log/syslog | $BAT_BIN --language=log"
+  alias kmanifests="find manifests/ -name '*.yaml' | xargs $BAT_BIN --language=yaml --style=numbers,grid"
+  alias docker-view="$BAT_BIN --language=dockerfile --style=numbers,grid Dockerfile*"
+else
+  alias bat="cat"
+  alias batn="cat -n"
+  alias batg="cat"
+  alias batdiff="diff"
+  alias jsonview="cat"
+  alias yamlview="cat"
+  alias confview="cat"
+  alias logview="tail -f /var/log/syslog"
+  alias kmanifests="find manifests/ -name '*.yaml' | xargs cat"
+  alias docker-view="cat Dockerfile*"
+fi
+
+
 # ------------------------------------------------------------------------------
 # | List Directory Contents (ls)                                               |
 # ------------------------------------------------------------------------------
 
-# list all files colorized in long format
-alias l="ls -lhF $COLORFLAG"
-# list all files with directories
-alias ldir="l -R"
-# Show hidden files
-alias l.="ls -dlhF .* $COLORFLAG"
-alias ldot="l."
-# use colors
-alias ls="ls -F $COLORFLAG"
-# display only files & dir in a v-aling view
-alias l1="ls -1 $COLORFLAG"
-# displays all files and directories in detail
-alias la="ls -laFh $COLORFLAG"
-# displays all files and directories in detail (without "." and without "..")
-alias lA="ls -lAFh $COLORFLAG"
-alias lsa="la"
-# displays all files and directories in detail with newest-files at bottom
-alias lr="ls -laFhtr $COLORFLAG"
-# show last 10 recently changed files
-alias lt="ls -altr | grep -v '^d' | tail -n 10"
-# show files and directories (also in sub-dir) that was touched in the last hour
-# alias lf="find ./* -ctime -1 | xargs ls -ltr $COLORFLAG"
-# displays files and directories in detail
-alias ll="ls -lFh --group-directories-first $COLORFLAG"
-# shows the most recently modified files at the bottom of
-alias llr="ls -lartFh --group-directories-first $COLORFLAG"
-# list only directories
-alias lsd="ls -lFh $COLORFLAG | grep --color=never '^d'"
-# sort by file-size
-alias lS="ls -1FSshr $COLORFLAG"
-# displays files and directories
-alias dir="ls --format=vertical $COLORFLAG"
-# displays more information about files and directories
-alias vdir="ls --format=long $COLORFLAG"
+# # list all files colorized in long format
+# alias l="ls -lhF $COLORFLAG"
+# # list all files with directories
+# alias ldir="l -R"
+# # Show hidden files
+# alias l.="ls -dlhF .* $COLORFLAG"
+# alias ldot="l."
+# # use colors
+# alias ls="ls -F $COLORFLAG"
+# # display only files & dir in a v-aling view
+# alias l1="ls -1 $COLORFLAG"
+# # displays all files and directories in detail
+# alias la="ls -laFh $COLORFLAG"
+# # displays all files and directories in detail (without "." and without "..")
+# alias lA="ls -lAFh $COLORFLAG"
+# alias lsa="la"
+# # displays all files and directories in detail with newest-files at bottom
+# alias lr="ls -laFhtr $COLORFLAG"
+# # show last 10 recently changed files
+# alias lt="ls -altr | grep -v '^d' | tail -n 10"
+# # show files and directories (also in sub-dir) that was touched in the last hour
+# # alias lf="find ./* -ctime -1 | xargs ls -ltr $COLORFLAG"
+# # displays files and directories in detail
+# alias ll="ls -lFh --group-directories-first $COLORFLAG"
+# # shows the most recently modified files at the bottom of
+# alias llr="ls -lartFh --group-directories-first $COLORFLAG"
+# # list only directories
+# #alias lsd="ls -lFh $COLORFLAG | grep --color=never '^d'"
+# # sort by file-size
+# alias lS="ls -1FSshr $COLORFLAG"
+# # displays files and directories
+# alias dir="ls --format=vertical $COLORFLAG"
+# # displays more information about files and directories
+# alias vdir="ls --format=long $COLORFLAG"
+
+###############################################################################
+# CORE FUNCTIONALITY
+###############################################################################
+
+# Icon configuration
+EZA_ICON_OPT="--icons=auto"
+[[ "$(uname -s)" == "Darwin" ]] && EZA_ICON_OPT="--icons=never"
+
+# Replace ls with eza (POSIX-compatible fallbacks included)
+alias ls="eza --group-directories-first $EZA_ICON_OPT --color=auto --time-style=long-iso -F auto"
+alias ll="eza -lF $EZA_ICON_OPT --git --header --binary --group --color-scale"
+alias la='ls -a'  # Include hidden files
+alias lt="eza $EZA_ICON_OPT --tree --level=2"  # Directory structure preview
+alias l.="eza $EZA_ICON_OPT -d .*"  # Exclusive dotfile view
+alias ltr="eza -lF --sort=modified -r $EZA_ICON_OPT --git --header --binary --group --color-scale"
+
+###############################################################################
+# SYSTEM ADMINISTRATION
+###############################################################################
+
+# Security and Permissions
+alias lso="eza $EZA_ICON_OPT -l --octal-permissions --no-user --no-time"
+alias lsz="eza $EZA_ICON_OPT -l -Z"  # SELinux/AppArmor context
+# alias lsp="eza -l --acl --xattr"  # Extended attributes
+
+# Storage Analysis
+alias lsd="eza $EZA_ICON_OPT -D"  # Directories only
+alias lsf="eza $EZA_ICON_OPT -f"  # Files only
+alias ldu="eza $EZA_ICON_OPT -l --total-size --sort=size"  # Disk usage
+alias lblock="eza $EZA_ICON_OPT -l --blocks"  # Block allocation view
+
+# Process Monitoring
+alias watchfs="watch -n 5 \"eza $EZA_ICON_OPT -l --changed --sort=changed --color=always\""
+
+###############################################################################
+# DEVOPS WORKFLOWS
+###############################################################################
+
+# Git Integration
+alias gitstat="eza $EZA_ICON_OPT -l --git --git-repos --tree --level=2"
+alias gittrack="eza $EZA_ICON_OPT --git-ignore | fzf --multi | xargs git add"
+
+# CI/CD Helpers
+alias cicd-check="eza $EZA_ICON_OPT -l --git-ignore \$BUILD_DIR --ignore-glob='*.tmp|*.bak'"
+
+# Log Analysis
+alias llog="eza $EZA_ICON_OPT -l --sort=modified -r /var/log/*.log"
+alias laccess="eza $EZA_ICON_OPT -l --time-style=iso /var/log/nginx/access.log"
+
+###############################################################################
+# ADVANCED FILTERING
+###############################################################################
+
+# Size-based filtering
+alias ls-large="eza $EZA_ICON_OPT -l --sort=size -r | grep -E '[0-9]{2}M|G'"
+alias ls-recent="eza $EZA_ICON_OPT -l --sort=modified -r --time-style=relative | head -20"
+
+# Type filtering
+alias lconf="eza $EZA_ICON_OPT -l *.conf *.ini"  # Configuration files
+alias limg="eza $EZA_ICON_OPT -l *.(png|jpg|jpeg|webp|svg)"  # Image files
+alias lscript="eza $EZA_ICON_OPT -l --ignore-glob='*.*' !(*.sh|*.bash|*.zsh)"  # Script files
+
+###############################################################################
+# PERFORMANCE OPTIMIZATION
+###############################################################################
+
+# Large directory handling
+alias lsp="eza $EZA_ICON_OPT -1 --no-icons --color=never"  # Pipe-friendly output
+alias lj="eza $EZA_ICON_OPT -1 --no-icons --color=never | parallel -j\$(nproc)"
+
+# Benchmarking
+alias bench-ls="hyperfine \"eza $EZA_ICON_OPT -l\" \"ls -l\" --warmup 5"
+
+###############################################################################
+# CROSS-PLATFORM SUPPORT
+###############################################################################
+
+case "$(uname -s)" in
+  Linux*)
+    alias lsc="eza $EZA_ICON_OPT -l --context --blocksize"  # SELinux contexts
+    alias lmount="eza $EZA_ICON_OPT -l --mounts /etc/mtab"  # Mount points
+    ;;
+  Darwin*)
+    alias lsc="eza $EZA_ICON_OPT -l -O --extended"  # macOS flags/xattrs
+    alias lmount="eza $EZA_ICON_OPT -l /Volumes"  # macOS volumes
+    ;;
+  FreeBSD*)
+    alias lsc="eza $EZA_ICON_OPT -l --flags --time-style=iso"
+    ;;
+esac
+
+###############################################################################
+# TROUBLESHOOTING & AUDIT
+###############################################################################
+
+# System auditing
+audit_fs() {
+  eza $EZA_ICON_OPT -lUg --time-style=full-iso --color-scale=age \
+    --sort=changed /etc /var/log | tee "audit-$(date +%s).log"
+}
+
+# Configuration validation
+alias ezacheck="eza --version; eza --help | grep -E 'group-directories|icons|sort'"
+
+###############################################################################
+# ENTERPRISE PRACTICES
+###############################################################################
+
+# RBAC Integration
+if [[ $(id -u) -eq 0 ]]; then
+  alias ls="eza $EZA_ICON_OPT -l --no-permissions --sysroot"
+fi
+
+# Centralized logging
+alias lshist="fc -l 1 | grep -e 'eza -l' | logger -t EZA_HISTORY"
+
+# Safe update function
+update_aliases() {
+  curl -sL https://example.com/secure-aliases >> ~/.aliases
+  sort -u ~/.aliases | sponge ~/.aliases
+  . ~/.aliases
+}
+
+###############################################################################
+# HUMAN-READABLE FORMATS
+###############################################################################
+
+# Time formats
+alias liso="eza $EZA_ICON_OPT -l --time-style=iso"
+alias lrel="eza $EZA_ICON_OPT -l --time-style=relative"
+
+# Size formats
+alias lhuman="eza $EZA_ICON_OPT -l --binary --sort=size"
+alias lbytes="eza $EZA_ICON_OPT -l --bytes --sort=size"
+
+###############################################################################
+# SERVER-SPECIFIC SHORTCUTS
+###############################################################################
+
+# Common server paths
+alias letc="eza $EZA_ICON_OPT -l --git --group-directories-first /etc"
+alias llog="eza $EZA_ICON_OPT -l --sort=modified -r /var/log"
+alias lweb="eza $EZA_ICON_OPT -l --tree --level=3 /var/www/html"
+
+# Network configs
+alias lnet="eza $EZA_ICON_OPT -l /etc/{hosts,networks,resolv.conf}"
+
+###############################################################################
+# COLOR ENHANCEMENTS
+###############################################################################
+
+# Visual hierarchy
+alias lgrad="eza $EZA_ICON_OPT -l --color-scale=size --color-scale-mode=gradient"
+alias lheat="eza $EZA_ICON_OPT -l --color-scale=age --color-scale-mode=gradient"
+
+###############################################################################
+# COMPATIBILITY FALLBACKS
+###############################################################################
+
+# Ensure POSIX compliance
+if ! command -v eza &> /dev/null; then
+  alias ls='ls --color=auto'
+  alias ll='ls -lh'
+  alias la='ls -A'
+fi
+
 
 # tree (with fallback)
 if which tree >/dev/null 2>&1; then
@@ -288,6 +511,31 @@ else
   alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
   alias ltree="tree | less -R"
 fi
+
+# ------------------------------------------------------------------------------
+# | git                                                            |
+# ------------------------------------------------------------------------------
+alias ga='git add'
+alias gap='ga --patch'
+alias gb='git branch'
+alias gba='gb --all'
+alias gc='git commit'
+alias gca='gc --amend --no-edit'
+alias gce='gc --amend'
+alias gco='git checkout'
+alias gcl='git clone --recursive'
+alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
+alias gds='gd --staged'
+alias gi='git init'
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
+alias gm='git merge'
+alias gn='git checkout -b'  # new branch
+alias gp='git push'
+alias gr='git reset'
+alias gs='git status --short'
+alias gu='git pull'
+
+gcm() { git commit --message "$*" }
 
 # ------------------------------------------------------------------------------
 # | Search and Find                                                            |
@@ -508,7 +756,7 @@ alias ssh="ssh -o \"ServerAliveInterval 60\" -o \"ServerAliveCountMax 120\""
 
 #alias nyancat="telnet miku.acm.uiuc.edu"  # offline
 
-alias starwars="telnet towel.blinkenlights.nl"
+# alias starwars="telnet towel.blinkenlights.nl"
 
 # ------------------------------------------------------------------------------
 # | auto-completion (for bash)                                                 |
@@ -595,27 +843,22 @@ done
 #alias pbpaste='xclip -selection clipboard -o'
 
 # Linux specific aliases, work on both MacOS and Linux.
-# Remove existing aliases to prevent conflicts
-unalias pbcopy 2>/dev/null
 pbcopy() {
-  local cmd_pbcopy
-  cmd_pbcopy=$(command -v pbcopy)
-  if [[ -n "$cmd_pbcopy" ]]; then
-    cat - | "$cmd_pbcopy"
-  else
-    cat - | xclip -selection clipboard
-  fi
+	stdin=$(</dev/stdin);
+	pbcopy="$(which pbcopy)";
+	if [[ -n "$pbcopy" ]]; then
+		echo "$stdin" | "$pbcopy"
+	else
+		echo "$stdin" | xclip -selection clipboard
+	fi
 }
-
-unalias pbpaste 2>/dev/null
 pbpaste() {
-  local cmd_pbpaste
-  cmd_pbpaste=$(command -v pbpaste)
-  if [[ -n "$cmd_pbpaste" ]]; then
-    "$cmd_pbpaste"
-  else
-    xclip -selection clipboard -out
-  fi
+	pbpaste="$(which pbpaste)";
+	if [[ -n "$pbpaste" ]]; then
+		"$pbpaste"
+	else
+		xclip -selection clipboard
+	fi
 }
 
 # ------------------------------------------------------------------------------
@@ -666,13 +909,13 @@ alias kgcm='kubectl get configmaps'
 alias kgpow='kubectl get pods --watch'
 
 # Fasd
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-alias v='f -e vim'
-alias o='a -e xdg-open'
+# alias a='fasd -a'        # any
+# alias s='fasd -si'       # show / search / select
+# alias d='fasd -d'        # directory
+# alias f='fasd -f'        # file
+# alias sd='fasd -sid'     # interactive directory selection
+# alias sf='fasd -sif'     # interactive file selection
+# alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+# alias zz='fasd_cd -d -i' # cd with interactive selection
+# alias v='f -e vim'
+# alias o='a -e xdg-open'
